@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+<h1>Update user</h1>
+<form th:method="post" th:action="@{/updateUser}" th:object="${user}">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Insert name: </label>
+    <input type="text" th:field="*{nickname}" id="Nickname" required/>
+    <div th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Nickname error</div>
+
+    <label>Insert email: </label>
+    <input type="email" th:field="*{email}" id="Email" required/>
+
+    <label>Insert age: </label>
+    <input type="number" th:field="*{age}" id="Age" min="0" required/>
+
+    <button type="submit">save</button>
+</form>
+</body>
+</html>
